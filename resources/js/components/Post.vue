@@ -20,9 +20,9 @@
             </div>
         </div>
 
-        <div class="w-full">
+        <div class="w-full" v-if="post.data.attributes.image">
             <img
-                src="https://pbs.twimg.com/media/ET_evzmWoAY_6ui?format=jpg"
+                :src="post.data.attributes.image"
                 alt="post image"
                 class="w-full">
         </div>
