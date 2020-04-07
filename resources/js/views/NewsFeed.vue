@@ -1,7 +1,12 @@
 <template>
     <div class="flex flex-col items-center py-4">
         <NewPost></NewPost>
+
+        <p v-if="loading">
+            Loading Posts...
+        </p>
         <Post
+            v-else
             v-for="post in posts.data"
             :key="post.data.post_id"
             :post="post"
@@ -25,6 +30,7 @@
         data: () => {
             return {
                 posts: null,
+                loading: true,
             }
         },
 
@@ -35,6 +41,9 @@
                 })
                 .catch(error => {
                     console.log('Unable to fetch posts.');
+                })
+                .finally(() => {
+                    this.loading = false;
                 });
         }
     }
