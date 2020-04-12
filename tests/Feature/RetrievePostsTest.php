@@ -11,10 +11,9 @@ class RetrievePostsTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testAUserCanRetrievePosts(): void
+    /** @test */
+    public function aUserCanRetrievePosts(): void
     {
-        $this->withoutExceptionHandling();
-
         $this->actingAs($user = factory(User::class)->create(), 'api');
 
         $posts = factory(Post::class, 2)->create([
@@ -55,10 +54,9 @@ class RetrievePostsTest extends TestCase
             ]);
     }
 
-    public function testAUserCanOnlyRetrieveTheirPosts()
+    /** @test */
+    public function aUserCanOnlyRetrieveTheirPosts()
     {
-        $this->withoutExceptionHandling();
-
         $this->actingAs($user = factory(User::class)->create(), 'api');
 
         $posts = factory(Post::class)->create();

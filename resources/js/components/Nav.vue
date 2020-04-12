@@ -41,7 +41,8 @@
                         4.5V3.6c0-.3-.3-.6-.7-.6z"/>
                 </svg>
             </router-link>
-            <router-link :to="`/users/${user.data.user_id}`" class="px-6 h-full border-b-2 border-white flex items-center">
+            <router-link :to="`/users/${authUser.data.user_id}`"
+                         class="px-6 h-full border-b-2 border-white flex items-center">
                 <img
                     class="w-8 h-8 object-cover rounded-full"
                     src="https://visualpharm.com/assets/387/Person-595b40b75ba036ed117da139.svg"
@@ -66,28 +67,16 @@
 </template>
 
 <script>
+    import {mapGetters} from 'vuex';
+
     export default {
+        computed: {
+            ...mapGetters({
+                authUser: 'authUser'
+            })
+        },
+
         name: "Nav",
-
-        data: () => {
-            return {
-                user: null,
-                loading: true,
-            }
-        },
-
-        mounted() {
-            axios.get(`/api/auth-user`)
-                .then(res => {
-                    this.user = res.data;
-                })
-                .catch(error => {
-                    console.log('Unable to fetch auth user');
-                })
-                .finally(() => {
-                    this.loading = false;
-                });
-        },
     }
 </script>
 

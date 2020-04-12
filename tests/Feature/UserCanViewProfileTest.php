@@ -12,10 +12,9 @@ class UserCanViewProfileTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testAUserCanViewUserProfile(): void
+    /** @test */
+    public function aUserCanViewUserProfile(): void
     {
-        $this->withoutExceptionHandling();
-
         $this->actingAs($user = factory(User::class)->create(), 'api');
         $post = factory(Post::class)->create();
 
@@ -35,10 +34,9 @@ class UserCanViewProfileTest extends TestCase
         ]);
     }
 
-    public function testAUserCanFetchPostsForAProfile(): void
+    /** @test */
+    public function aUserCanFetchPostsForAProfile(): void
     {
-        $this->withoutExceptionHandling();
-
         $this->actingAs($user = factory(User::class)->create(), 'api');
         $post = factory(Post::class)->create([
             'user_id' => $user->id,

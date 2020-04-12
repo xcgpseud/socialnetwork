@@ -11,10 +11,9 @@ class GetAuthUserTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testAuthenticatedUserCanBeFetched(): void
+    /** @test */
+    public function authenticatedUserCanBeFetched(): void
     {
-        $this->withoutExceptionHandling();
-
         $this->actingAs($user = factory(User::class)->create(), 'api');
 
         $response = $this->get('/api/auth-user');

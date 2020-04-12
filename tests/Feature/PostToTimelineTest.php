@@ -11,9 +11,9 @@ class PostToTimelineTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_AUserCanPostATextPost(): void
+    /** @test */
+    public function aUserCanPostATextPost(): void
     {
-        $this->withoutExceptionHandling();
         $this->actingAs($user = factory(User::class)->create(), 'api');
 
         $response = $this->post('/api/posts', [
