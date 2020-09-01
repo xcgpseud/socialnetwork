@@ -16,16 +16,11 @@ const actions = {
             .catch(error => {
                 console.log('Unable to fetch auth user');
             });
-            // .finally(() => {
-            //     this.loading = false;
-            // });
     },
 };
 
 const mutations = {
-    setAuthUser(state, user) {
-        state.user = user;
-    },
+    setAuthUser: (state, user) => state.user = user,
 };
 
 export default {
